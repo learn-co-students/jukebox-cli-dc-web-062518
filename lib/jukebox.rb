@@ -10,3 +10,49 @@ songs = [
   "Amos Lee - Keep It Loose, Keep It Tight"
 ]
 
+def help
+  puts "I accept the following commands:"
+  puts "- help : displays this help message"
+  puts "- list : displays a list of songs you can play"
+  puts "- play : lets you choose a song to play"
+  puts "- exit : exits this program"
+end
+
+def list(songs)
+   songs.each_with_index{|song, index| puts "#{index + 1}. #{song}"}
+end
+
+def play(songs)
+  puts "Please enter a song name or number:"
+  user_entry = gets.chomp
+  song_hash = {}
+  songs.each_with_index{|song,index| song_hash[(index + 1).to_s] = song}
+  
+  if song_hash[user_entry] != nil
+    puts "Playing #{song_hash[user_entry]}"
+  elsif songs.include?(user_entry)
+    puts "Playing #{user_entry}"
+  else
+    puts "Invalid input, please try again"
+  end
+end
+
+def exit_jukebox
+  puts "Goodbye"
+end
+
+def run(arg)
+  puts "Please enter a command:"
+  user_entry = gets.chomp
+    case user_entry
+     when "play"
+        play
+     when "list"
+        list
+     when "help"
+        help
+     when "exit"
+        exit_jukebox
+     end
+end
+    

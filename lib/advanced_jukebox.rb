@@ -14,9 +14,8 @@
 
 def help
   #this method should be the same as in jukebox.rb
-
+  puts ""
 end
-
 
 
 def list(my_songs)
